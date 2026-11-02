@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500;600&display=swap");
+
+:root{
+  --bg:#fffdf6; --bg2:#fff3dc; --card:#ffffff; --text:#4a2a2f; --muted:#a07a72;
+  --rose:#e11d48; --rose-dark:#be123c; --soft:#fde7d9;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);font-family:"Poppins","Segoe UI",system-ui,sans-serif;line-height:1.6;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);background-attachment:fixed;overflow-x:hidden}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px 48px;position:relative;z-index:1}
+h1,h2{font-family:"Playfair Display",Georgia,serif}
+
+/* falling petals */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-40px;animation:fall linear infinite;opacity:.7}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+/* hero */
+.hero{text-align:center;padding:56px 0 20px;position:relative}
+.corner{position:absolute;font-size:46px;animation:sway 4s ease-in-out infinite}
+.corner.l{left:0;top:30px}.corner.r{right:0;top:30px;animation-delay:1s}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.tag{letter-spacing:.25em;font-size:.75rem;color:var(--rose);font-weight:600}
+h1{font-size:2.4rem;margin:8px 0 4px}
+.date{color:var(--muted)}
+.counter{display:inline-block;margin-top:14px;background:var(--card);border:1px solid var(--soft);padding:8px 20px;border-radius:999px;font-weight:500;color:var(--rose-dark)}
+
+h2{text-align:center;margin:44px 0 6px;font-size:1.7rem}
+.divider{text-align:center;margin-bottom:16px;letter-spacing:.4em}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.photo{aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:34px;cursor:pointer;border:4px solid var(--card);box-shadow:0 6px 16px rgba(225,29,72,.15);transition:transform .2s}
+.photo:hover{transform:rotate(-2deg) scale(1.04)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.hint{text-align:center;color:var(--muted);font-size:.85rem;margin-top:12px}
+.center{text-align:center;margin-top:14px}
+
+.btn{background:var(--rose);color:#fff;border:0;padding:11px 24px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--rose-dark)}
+.btn.alt{background:var(--card);color:var(--rose-dark);border:1px solid var(--soft)}
+
+/* wishes */
+form{background:var(--card);padding:20px;border-radius:20px;display:grid;gap:10px;box-shadow:0 8px 20px rgba(225,29,72,.1)}
+input,textarea{width:100%;padding:11px 14px;border:2px solid var(--soft);border-radius:14px;font:inherit;background:var(--bg);color:var(--text)}
+input:focus,textarea:focus{outline:none;border-color:var(--rose)}
+.wishes{display:grid;gap:12px;margin-top:18px}
+.wish{background:var(--card);padding:14px 18px;border-radius:16px;border-left:5px solid var(--rose);box-shadow:0 4px 12px rgba(225,29,72,.08);animation:pop .3s}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wish p{margin:0 0 6px;overflow-wrap:anywhere}
+.wish small{color:var(--muted)}
+
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:14px}
+footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.9rem}
